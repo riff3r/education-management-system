@@ -107,20 +107,11 @@ declare module '@mui/material/Badge' {
     }
 }
 
-declare module '@mui/material/Chip' {
-    interface ChipPropsSizeOverrides {
-        xSmall: true;
-    }
-    interface ChipPropsVariantOverrides {
-        tonal: true;
-    }
-}
-
 declare module '@mui/material/Input' {
     // interface InputProps {
     //     // Add any custom props if necessary
     // }
-    
+
     interface InputClasses {
         // Extend with custom classes if necessary
         adornedStart?: string;
@@ -136,5 +127,62 @@ declare module '@mui/material/OutlinedInput' {
         adornedEnd?: string;
         multiline?: string;
         sizeSmall?: string;
+    }
+}
+
+declare module '@mui/material/styles' {
+    interface Components {
+        MuiLoadingButton?: {
+            defaultProps?: {
+                variant?: 'text' | 'outlined' | 'contained';
+                disableElevation?: boolean;
+            };
+        };
+    }
+}
+
+declare module '@mui/material/Chip' {
+    interface ChipPropsSizeOverrides {
+        xSmall: true;
+    }
+    interface ChipPropsVariantOverrides {
+        tonal: true;
+    }
+
+    interface ChipPropsColorOverrides {
+        tonalPrimary: true;
+        tonalSecondary: true;
+        tonalError: true;
+        tonalWarning: true;
+        tonalInfo: true;
+        tonalSuccess: true;
+    }
+
+    interface ChipClasses {
+        xSmall: true;
+        tonalDefault: true;
+        tonalPrimary: true;
+        tonalSecondary: true;
+        tonalError: true;
+        tonalWarning: true;
+        tonalInfo: true;
+        tonalSuccess: true;
+        deleteIconTonalColorPrimary: true;
+        deleteIconTonalColorSecondary: true;
+        deleteIconTonalColorError: true;
+        deleteIconTonalColorWarning: true;
+        deleteIconTonalColorInfo: true;
+        deleteIconTonalColorSuccess: true;
+        avatarColorDefault: true;
+        avatarColorError: true;
+        avatarColorWarning: true;
+        avatarColorInfo: true;
+        avatarColorSuccess: true;
+        filledDefault: true;
+        colorDefault: true;
+        sizeSmall: true;
+        avatarSmall: true;
+        avatarXSmall: true;
+        deleteIconXSmall: true;
     }
 }
