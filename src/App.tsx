@@ -7,6 +7,7 @@ import { Stack } from '@mui/material';
 import Class from './components/academics/class/Class';
 import StudentAdmission from './components/students/StudentAdmission';
 import Sidebar from './components/Sidebar';
+import Students from './components/students/Students';
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                         <Route path='/academics/classes-with-subject' element={<ClassesWithSubject />} />
 
                         <Route path='/student/admission' element={<StudentAdmission />} />
+                        <Route path='/students' element={<Students />} />
                         {/* Add other routes as needed */}
                     </Routes>
                 </Stack>
