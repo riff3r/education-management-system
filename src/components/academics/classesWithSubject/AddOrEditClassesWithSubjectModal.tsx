@@ -20,12 +20,19 @@ import {
 import { useState } from 'react';
 import { MediumList, SubjectList } from '../../../helper/constant/coreConstant';
 import ModalWithHeader from '../../common/modals/ModalWithHeader';
-const AddOrEditClassesWithSubjectModal = ({ open, onClose, edit }) => {
+
+interface IProps {
+    open: boolean;
+    onClose: () => void;
+    edit?: any;
+}
+
+const AddOrEditClassesWithSubjectModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     const [subjectName, setSubjectName] = useState(edit?.title || '');
 
     const [selectedMedium, setSelectedMedium] = useState(edit?.medium || 2);
 
-    const handleName = (event) => {
+    const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSubjectName(event.target.value);
     };
 
@@ -69,9 +76,9 @@ const AddOrEditClassesWithSubjectModal = ({ open, onClose, edit }) => {
                         input={<OutlinedInput label='Class Teacher' />}
                         // MenuProps={MenuProps}
                     >
-                        {SubjectList.map((name) => (
-                            <MenuItem key={name} value={name}>
-                                {name}
+                        {SubjectList.map((subject, index) => (
+                            <MenuItem key={index} value={subject.id}>
+                                {subject.title}
                             </MenuItem>
                         ))}
                     </Select>
@@ -113,8 +120,8 @@ const AddOrEditClassesWithSubjectModal = ({ open, onClose, edit }) => {
                                     // MenuProps={MenuProps}
                                 >
                                     {SubjectList.map((name) => (
-                                        <MenuItem key={name} value={name}>
-                                            {name}
+                                        <MenuItem key={name.id} value={name.id}>
+                                            {name.title}
                                         </MenuItem>
                                     ))}
                                 </Select>
