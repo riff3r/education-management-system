@@ -1,10 +1,11 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { Button, InputAdornment, MenuItem, OutlinedInput, Select, Stack, TextField } from '@mui/material';
 import React, { useState } from 'react';
-import Headline from '../common/Headline';
-import { ClassList } from '../../helper/constant/coreConstant';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import SortByPopOver from './SortByPopOver';
+import { ClassList } from '../../../helper/constant/coreConstant';
+import Headline from '../../common/Headline';
+import StudentsTable from './StudentsTable';
 
 const Students: React.FC = () => {
     const [search, setSearch] = useState('');
@@ -83,6 +84,10 @@ const Students: React.FC = () => {
                             Sort By
                         </Button>
                     </Stack>
+                </Stack>
+
+                <Stack spacing={2} p={2}>
+                    <StudentsTable />
                 </Stack>
             </Stack>
 
