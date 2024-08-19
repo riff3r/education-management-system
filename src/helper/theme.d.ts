@@ -80,6 +80,13 @@ declare module '@mui/material/IconButton' {
         variant?: 'rounded' | 'outlined' | 'roundedBorder'; // Add custom variants here
         color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'inherit' | 'inheritWhite';
     }
+
+    interface IconButtonPropsVariantOverrides {
+        rounded: true;
+        outlined: true;
+        roundedBorder: true;
+        outlined: true;
+    }
 }
 
 declare module '@mui/material/Switch' {

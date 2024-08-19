@@ -61,7 +61,10 @@ const navItems = [
         label: 'Students',
         icon: <SchoolIcon />,
         parentId: null,
-        children: [{ id: 9, label: 'Student Admission ', to: '/student/Admission' }],
+        children: [
+            { id: 9, label: 'Student List', to: '/students' },
+            { id: 10, label: 'Student Admission ', to: '/student/Admission' },
+        ],
     },
 ];
 

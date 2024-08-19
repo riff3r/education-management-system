@@ -1,4 +1,4 @@
-import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
+import { Checkbox, IconButton, Stack, TableCell, TableRow } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
@@ -30,9 +30,36 @@ const EachStudentItem = ({ item }) => {
 
     return (
         <>
-            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableRow>
+                <TableCell component='td' scope='row'>
+                    <Checkbox color='primary' size='small' />
+                </TableCell>
                 <TableCell component='td' scope='row'>
                     {item.name}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.class}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.Section}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.grNumber}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.rollNumber}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.gender}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.admissionDate}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.guardianName}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.guardianMobile}
                 </TableCell>
                 <TableCell align='center'>
                     <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={1}>

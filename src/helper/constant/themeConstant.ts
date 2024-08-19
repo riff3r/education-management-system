@@ -1755,7 +1755,6 @@ export const ElementProps: Components = {
     //         },
     //     },
     // },
-
 };
 
 export const myBreakpoints = {
