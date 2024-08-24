@@ -95,3 +95,14 @@ export const ClassList = [
         tuitionFee: 2000,
     },
 ];
+
+export const GENDER_LIST = [
+    {
+        id: 1,
+        title: 'Male',
+    },
+    {
+        id: 2,
+        title: 'Female',
+    },
+];
