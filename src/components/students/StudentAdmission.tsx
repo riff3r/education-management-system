@@ -19,6 +19,10 @@ type Inputs = {
     previousInstitution: string;
     presentAddress: string;
     permanentAddress: string;
+    guardianFirstName: string;
+    guardianLastName: string;
+    guardianMobileNumber: string;
+    guardianEmail: string;
 };
 
 const StudentAdmission = () => {
@@ -472,10 +476,9 @@ const StudentAdmission = () => {
                                         />
                                     )}
                                 />
-                                <TextField multiline rows={2} value={''} name='permanentAddress' label='Permanent Address' fullWidth />
                             </Grid>
                         </Grid>
-                        {/* <Grid container spacing={2} mb={3}>
+                        <Grid container spacing={2} mb={3}>
                             <Grid item xs={12}>
                                 <Typography variant='subtitle1' mb={1}>
                                     Guardian Information
@@ -483,25 +486,79 @@ const StudentAdmission = () => {
                                 <Divider light />
                             </Grid>
                             <Grid item xs={12} md={3}>
-                                <TextField value={''} name='guardianFirstName ' label='Guardian First Name' required fullWidth />
-                            </Grid>
-                            <Grid item xs={12} md={3}>
-                                <TextField value={''} type='text' name='guardianLastName' label='Guardian Last Name' required fullWidth />
-                            </Grid>
-                            <Grid item xs={12} md={3}>
-                                <TextField
-                                    value={''}
-                                    type='number'
-                                    name='guardianMobileNumber'
-                                    label='Guardian Mobile Number'
-                                    required
-                                    fullWidth
+                                <Controller
+                                    name='guardianFirstName'
+                                    control={control}
+                                    defaultValue=''
+                                    rules={{ required: 'Guardian First Name is required' }}
+                                    render={({ field }) => (
+                                        <TextField
+                                            {...field}
+                                            label='Guardian First Name'
+                                            error={!!errors.guardianFirstName}
+                                            helperText={errors.guardianFirstName ? errors.guardianFirstName.message : ''}
+                                            fullWidth
+                                            required
+                                        />
+                                    )}
                                 />
                             </Grid>
                             <Grid item xs={12} md={3}>
-                                <TextField value={''} type='email' name='guardianEmail' label='Guardian Email' fullWidth />
+                                <Controller
+                                    name='guardianLastName'
+                                    control={control}
+                                    defaultValue=''
+                                    rules={{ required: 'Guardian Last Name is required' }}
+                                    render={({ field }) => (
+                                        <TextField
+                                            {...field}
+                                            label='Guardian Last Name'
+                                            error={!!errors.guardianLastName}
+                                            helperText={errors.guardianLastName ? errors.guardianLastName.message : ''}
+                                            fullWidth
+                                            required
+                                        />
+                                    )}
+                                />
                             </Grid>
-                        </Grid> */}
+                            <Grid item xs={12} md={3}>
+                                <Controller
+                                    name='guardianMobileNumber'
+                                    control={control}
+                                    defaultValue=''
+                                    rules={{ required: 'Guardian Mobile Number is required' }}
+                                    render={({ field }) => (
+                                        <TextField
+                                            type='number'
+                                            label='Guardian Mobile Number'
+                                            error={!!errors.guardianMobileNumber}
+                                            helperText={errors.guardianMobileNumber ? errors.guardianMobileNumber.message : ''}
+                                            fullWidth
+                                            required
+                                            {...field}
+
+                                        />
+                                    )}
+                                />
+                            </Grid>
+                            <Grid item xs={12} md={3}>
+                                <Controller
+                                    name='guardianEmail'
+                                    control={control}
+                                    defaultValue=''
+                                    render={({ field }) => (
+                                        <TextField
+                                            type='email'
+                                            label='Guardian Email Number'
+                                            error={!!errors.guardianEmail}
+                                            helperText={errors.guardianEmail ? errors.guardianEmail.message : ''}
+                                            fullWidth
+                                            {...field}
+                                        />
+                                    )}
+                                />
+                            </Grid>
+                        </Grid>
                     </Box>
 
                     <Divider />
