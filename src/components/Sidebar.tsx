@@ -1,38 +1,37 @@
 import { Dashboard } from '@mui/icons-material';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 import SchoolIcon from '@mui/icons-material/School';
-import { Collapse, Stack, styled } from '@mui/material';
+import { Box, Divider, ListItem, Stack, styled, Typography } from '@mui/material';
+import { grey } from '@mui/material/colors';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { ALL_DATA_LISTS } from '../helper/constant/sidebarListsData';
 
 const SidebarWrapper = styled(Stack)(({ theme }) => ({
     minWidth: 260,
     height: '100vh',
     backgroundColor: theme.palette.background.paper,
     borderRight: `1px solid ${theme.palette.divider}`,
-    '& .logo': {
-        maxHeight: 60,
-        padding: '8px 24px 8px 0',
-    },
-    '& .navListWrapper': {
-        '& .navListParent': {
-            '&.Mui-selected': {
-                backgroundColor: theme.palette.common.white,
-            },
-        },
-        '& .navListChild': {
-            '& .MuiButtonBase-root': {
-                paddingLeft: 56,
-            },
-            '& .Mui-selected': {},
-        },
-    },
+    // '& .logo': {
+    //     maxHeight: 60,
+    //     padding: '8px 24px 8px 0',
+    // },
+    // '& .navListWrapper': {
+    //     '& .navListParent': {
+    //         '&.Mui-selected': {
+    //             backgroundColor: theme.palette.common.white,
+    //         },
+    //     },
+    //     '& .navListChild': {
+    //         '& .MuiButtonBase-root': {
+    //             paddingLeft: 56,
+    //         },
+    //         '& .Mui-selected': {},
+    //     },
+    // },
 }));
 
 const navItems = [
@@ -69,74 +68,82 @@ const navItems = [
 ];
 
 const Sidebar = () => {
-    const [expanded, setExpanded] = useState(null);
-    const [selected, setSelected] = useState({ parent: null, child: navItems[0].id });
+    const history = useNavigate();
     const navigate = useNavigate();
 
-    const handleToggle = (item) => {
-        if (expanded === item.id) {
-            setExpanded(null);
-        } else {
-            setExpanded(item.id);
-            if (item.children && item.children.length > 0) {
-                const firstChild = item.children[0];
-                setSelected({ parent: item.id, child: firstChild.id });
-                navigate(firstChild.to);
-            }
-        }
+    const navigateTo = (url: string) => {
+        history(url);
     };
 
-    const handleSelect = (parentId, childId, route) => {
-        setSelected({ parent: parentId, child: childId });
-        navigate(route);
-    };
-
-    const renderNavItem = (item, parentId = null) => {
-        const isSelected = selected.child === item.id;
-        const isExpanded = expanded === item.id;
-        const hasChildren = !!item.children;
-
-        return (
-            <div key={item.id}>
-                <ListItemButton
-                    component={item.to ? Link : 'div'}
-                    to={item.to}
-                    selected={isSelected || selected.parent === item.id}
-                    onClick={() => {
-                        if (hasChildren) handleToggle(item);
-                        if (!hasChildren) handleSelect(parentId, item.id, item.to);
-                    }}
-                    className={hasChildren ? 'navListParent' : 'navListChild'}
-                >
-                    {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-                    <ListItemText primary={item.label} />
-                    {hasChildren && (isExpanded ? <ExpandLess /> : <ExpandMore />)}
-                </ListItemButton>
-                {hasChildren && (
-                    <Collapse in={isExpanded} timeout='auto' unmountOnExit>
-                        <List component='div' disablePadding>
-                            {item.children.map((child) => renderNavItem(child, item.id))}
-                        </List>
-                    </Collapse>
-                )}
-            </div>
-        );
-    };
 
     return (
         <SidebarWrapper>
-            <nav aria-label='main mailbox folders'>
-                <Stack className='logo' direction='row' alignItems='center' justifyContent='center' textAlign={'center'}>
-                    <img
-                        height={44}
-                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjsScWYmyfPv3XdkNdEFVJ1wlDKMOgcSWUcg&s'
-                        alt='logo'
-                    />
+            <Stack
+                // width={200}
+                justifyContent={'space-between'}
+                flexShrink={0}
+                borderRight={'1px solid #f9f9f9'}
+                bgcolor={'common.white'}
+                sx={{ zIndex: 999 }}
+            >
+                <Stack height={'100%'}>
+                    <Box sx={{ height: 'calc(100% - 10px)', overflowY: 'auto', px: 1, /* mx: 1 */ }}>
+                        {ALL_DATA_LISTS.map((list) => {
+                            return (
+                                <Stack key={list.title}>
+                                    <Typography variant={'overline'} fontSize={12} color={'text.tertiary'}>
+                                        {list.title}
+                                    </Typography>
+
+                                    <List dense>
+                                        {list.subMenu?.map((submenu) => {
+                                            const selected =
+                                                location.pathname.includes(submenu.link) ||
+                                                (location.pathname === '/' && submenu.link === '/dashboard');
+                                            // if (!hasLoyalty?.access && submenu.title === 'E-Loyalty Cards') {
+                                            //     return null;
+                                            // }
+                                            return (
+                                                <ListItem disablePadding key={submenu.title} className={submenu.className} sx={{ mb: 0.5 }}>
+                                                    <ListItemButton
+                                                        selected={selected}
+                                                        onClick={() => navigate(submenu.link ? submenu.link : '')}
+                                                        sx={{ px: 1 }}
+                                                    >
+                                                        <ListItemIcon
+                                                            sx={{
+                                                                mr: 1,
+                                                                '& svg': {
+                                                                    fontSize: 20,
+                                                                    color: selected ? 'primary.main' : 'text.tertiary',
+                                                                },
+                                                            }}
+                                                        >
+                                                            {submenu.icon}
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            primary={
+                                                                <Typography
+                                                                    noWrap
+                                                                    variant={'body2'}
+                                                                    sx={{ color: selected ? 'primary.main' : grey[700], fontWeight: 700 }}
+                                                                >
+                                                                    {submenu.title}
+                                                                </Typography>
+                                                            }
+                                                        />
+                                                    </ListItemButton>
+                                                </ListItem>
+                                            );
+                                        })}
+                                    </List>
+                                    <Divider sx={{ opacity: 0.6, mb: 2 }} />
+                                </Stack>
+                            );
+                        })}
+                    </Box>
                 </Stack>
-                <List component='nav' aria-labelledby='nested-list-subheader' className='navListWrapper'>
-                    {navItems.map((item) => renderNavItem(item))}
-                </List>
-            </nav>
+            </Stack>
         </SidebarWrapper>
     );
 };

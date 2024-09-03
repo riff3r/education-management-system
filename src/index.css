@@ -16,3 +16,20 @@ body{
   margin: 0;
   background-color: rgb(250, 250, 251);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: rgb(255, 247, 247);
+  box-shadow:
+      inset 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0 1px 1px 0 rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(252, 214, 199);
+  border-radius: 5px;
+}
