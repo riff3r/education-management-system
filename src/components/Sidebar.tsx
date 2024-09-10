@@ -75,7 +75,6 @@ const Sidebar = () => {
         history(url);
     };
 
-
     return (
         <SidebarWrapper>
             <Stack
@@ -84,10 +83,10 @@ const Sidebar = () => {
                 flexShrink={0}
                 borderRight={'1px solid #f9f9f9'}
                 bgcolor={'common.white'}
-                sx={{ zIndex: 999 }}
+                sx={{ zIndex: 999, height: '100%' }}
             >
                 <Stack height={'100%'}>
-                    <Box sx={{ height: 'calc(100% - 10px)', overflowY: 'auto', px: 1, /* mx: 1 */ }}>
+                    <Box sx={{ height: 'calc(100% - 10px)', overflowY: 'auto', px: 1 /* mx: 1 */ }}>
                         {ALL_DATA_LISTS.map((list) => {
                             return (
                                 <Stack key={list.title}>

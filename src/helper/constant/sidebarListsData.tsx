@@ -39,13 +39,21 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
             { title: 'Sections', link: '/academics/sections', icon: <AccountBalanceIcon /> },
             { title: 'Subjects', link: '/academics/subjects', icon: <UserIcon /> },
             { title: 'Classes', link: '/academics/classes', icon: <UserIcon /> },
-            { title: 'Classes with subject', link: '/academics/classes-with-subject', icon: <UserIcon /> },
+            { title: 'Class with subject', link: '/academics/class-with-subject', icon: <UserIcon /> },
         ],
     },
     {
         title: 'Students',
         subMenu: [
             { title: 'Student List', link: '/students', icon: <CreatorsIcon /> },
+            { title: 'Student Admission', link: '/student/Admission', icon: <UserIcon /> },
+            // { title: 'All Contacts', link: '/all-contacts', icon: <UsersIcon /> },
+        ],
+    },
+    {
+        title: 'Fees',
+        subMenu: [
+            { title: 'Fees Type', link: '/fees-type', icon: <CreatorsIcon /> },
             { title: 'Student Admission', link: '/student/Admission', icon: <UserIcon /> },
             // { title: 'All Contacts', link: '/all-contacts', icon: <UsersIcon /> },
         ],

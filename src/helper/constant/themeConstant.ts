@@ -297,57 +297,56 @@ export const ElementProps: Components = {
                 },
             },
             tonalPrimary: {
-                backgroundColor: alpha(lightModePalette.primary.light, lightModePalette.tonalOffset),
-                color: lightModePalette.primary.dark,
+                background: propertyInObj('light', lightModePalette.primary),
+                color: propertyInObj('main', lightModePalette.primary),
                 '&:hover': {
-                    backgroundColor: lightModePalette.primary.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.primary), opacityHover),
                 },
             },
             tonalSecondary: {
-                backgroundColor: alpha(lightModePalette.secondary.light, lightModePalette.tonalOffset),
-                color: lightModePalette.secondary.dark,
+                background: propertyInObj('light', lightModePalette.secondary),
+                color: propertyInObj('main', lightModePalette.secondary),
                 '&:hover': {
-                    backgroundColor: lightModePalette.secondary.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.secondary), opacityHover),
                 },
             },
             tonalError: {
-                backgroundColor: alpha(lightModePalette.error.light, lightModePalette.tonalOffset),
-                color: lightModePalette.error.dark,
+                background: propertyInObj('light', lightModePalette.error),
+                color: propertyInObj('main', lightModePalette.error),
                 '&:hover': {
-                    backgroundColor: lightModePalette.error.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.error), opacityHover),
                 },
             },
             tonalWarning: {
-                backgroundColor: alpha(lightModePalette.warning.light, lightModePalette.tonalOffset),
-                color: lightModePalette.warning.dark,
+                background: propertyInObj('light', lightModePalette.warning),
+                color: propertyInObj('main', lightModePalette.warning),
                 '&:hover': {
-                    backgroundColor: lightModePalette.warning.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.warning), opacityHover),
                 },
             },
             tonalInfo: {
-                backgroundColor: alpha(lightModePalette.info.light, lightModePalette.tonalOffset),
-                color: lightModePalette.info.dark,
+                background: propertyInObj('light', lightModePalette.info),
+                color: propertyInObj('main', lightModePalette.info),
                 '&:hover': {
-                    backgroundColor: lightModePalette.info.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.info), opacityHover),
                 },
             },
             tonalSuccess: {
-                backgroundColor: alpha(lightModePalette.success.light, lightModePalette.tonalOffset),
-                color: lightModePalette.success.dark,
+                background: propertyInObj('light', lightModePalette.success),
+                color: propertyInObj('main', lightModePalette.success),
                 '&:hover': {
-                    backgroundColor: lightModePalette.success.light,
+                    backgroundColor: alpha(propertyInObj('main', lightModePalette.success), opacityHover),
                 },
             },
             tonalInherit: {
-                backgroundColor: alpha(lightModePalette.text.light, lightModePalette.tonalOffset),
-                color: lightModePalette.text.secondary,
+                backgroundColor: alpha(propertyInObj('primary', lightModePalette.text), opacityHover),
+                color: lightModePalette.text?.secondary,
                 '&:hover': {
-                    color: lightModePalette.text.primary,
-                    backgroundColor: lightModePalette.text.light,
+                    backgroundColor: alpha(propertyInObj('primary', lightModePalette.text), opacityHover),
                 },
             },
             tonalInheritWhite: {
-                backgroundColor: alpha(lightModePalette.inheritWhite.main, lightModePalette.tonalOffset),
+                backgroundColor: alpha(lightModePalette.inheritWhite.main, opacityFocus),
                 color: lightModePalette.text.contrastText,
                 '&:hover': {
                     backgroundColor: lightModePalette.text.light,

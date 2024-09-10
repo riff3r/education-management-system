@@ -8,6 +8,7 @@ import Class from './components/academics/class/Class';
 import StudentAdmission from './components/students/StudentAdmission';
 import Sidebar from './components/Sidebar';
 import Students from './components/students/allStudents/Students';
+import FeesTypes from './components/fees/FeesTypes/FeesTypes';
 
 const App = () => {
     return (
@@ -22,11 +23,12 @@ const App = () => {
                         <Route path='/academics/sections' element={<Section />} />
                         <Route path='/academics/subjects' element={<Subject />} />
                         <Route path='/academics/classes' element={<Class />} />
-                        <Route path='/academics/classes-with-subject' element={<ClassesWithSubject />} />
+                        <Route path='/academics/class-with-subject' element={<ClassesWithSubject />} />
 
                         <Route path='/student/admission' element={<StudentAdmission />} />
                         <Route path='/students' element={<Students />} />
-                        {/* Add other routes as needed */}
+
+                        <Route path='/fees-type' element={<FeesTypes />} />
                     </Routes>
                 </Stack>
             </Stack>
