@@ -106,3 +106,18 @@ export const GENDER_LIST = [
         title: 'Female',
     },
 ];
+
+export const FEES_TYPES = [
+    {
+        id: 1,
+        title: 'Admission Fee',
+    },
+    {
+        id: 2,
+        title: 'Tuition Fee',
+    },
+    {
+        id: 3,
+        title: 'Transportation Fee',
+    },
+];
