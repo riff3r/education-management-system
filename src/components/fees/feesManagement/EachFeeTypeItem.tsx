@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
+import { IconButton, Stack, Switch, TableCell, TableRow } from '@mui/material';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
 import AddOrEditFeesTypeModal from './AddOrEditFeesTypeModal';
 import FeeTypePopover from './FeeTypePopover';
@@ -11,6 +11,9 @@ type Props = {
     item: {
         id: number;
         title: string;
+        feesType: string;
+        amount: string;
+        status: boolean;
     };
 };
 const EachFeeTypeItem: React.FC<Props> = ({ item }) => {
@@ -40,6 +43,18 @@ const EachFeeTypeItem: React.FC<Props> = ({ item }) => {
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component='td' scope='row'>
                     {item.title}
+                </TableCell>
+                <TableCell component='td' scope='row'>
+                    {item.feesType === "1" ? "Compulsory" : "Optional"}
+                </TableCell>
+
+                <TableCell component='td' scope='row'>
+                    {item.amount}
+                </TableCell>
+
+                <TableCell component='td' scope='row'>
+                    {/* {item.status ? 'Active' : 'Inactive' } */}
+                    <Switch color='primary' checked={item.status} />
                 </TableCell>
 
                 <TableCell align='center'>

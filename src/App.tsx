@@ -9,6 +9,7 @@ import StudentAdmission from './components/students/StudentAdmission';
 import Sidebar from './components/Sidebar';
 import Students from './components/students/allStudents/Students';
 import FeesTypes from './components/fees/FeesTypes/FeesTypes';
+import FeesManagement from './components/fees/feesManagement/FeesManagement';
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                         <Route path='/students' element={<Students />} />
 
                         <Route path='/fees-type' element={<FeesTypes />} />
+                        <Route path='/fees-management' element={<FeesManagement />} />
                     </Routes>
                 </Stack>
             </Stack>

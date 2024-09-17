@@ -11,6 +11,9 @@ const FeeTypeTable = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
+                            <TableCell align='center'>Type</TableCell>
+                            <TableCell align='center'>Amount</TableCell>
+                            <TableCell align='center'>Status</TableCell>
                             <TableCell align='center' width={'20%'}>
                                 Action
                             </TableCell>

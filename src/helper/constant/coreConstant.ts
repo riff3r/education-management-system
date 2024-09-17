@@ -111,13 +111,29 @@ export const FEES_TYPES = [
     {
         id: 1,
         title: 'Admission Fee',
+        type: '1',
+        amount: 10000,
+        status: true,
     },
     {
         id: 2,
         title: 'Tuition Fee',
+        type: '1',
+        amount: 2000,
+        status: true,
     },
     {
         id: 3,
         title: 'Transportation Fee',
+        type: '2',
+        amount: 750,
+        status: true,
+    },
+    {
+        id: 4,
+        title: 'Hostel Fee',
+        type: '2',
+        amount: 2000,
+        status: false,
     },
 ];

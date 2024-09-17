@@ -6,8 +6,7 @@ import DashboardIcon from '../../common/icons/DashboardIcon.tsx';
 import SettingsIcon from '../../common/icons/SettingsIcon.tsx';
 
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-
+import PaidIcon from '@mui/icons-material/Paid';
 export interface EachListInterface {
     title: string;
     link?: string;
@@ -55,7 +54,7 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
         title: 'Fees',
         subMenu: [
             { title: 'Fees Type', link: '/fees-type', icon: <CreatorsIcon /> },
-            { title: 'Manage Fees', link: '/fees-management', icon: <AttachMoneyIcon /> },
+            { title: 'Manage Fees', link: '/fees-management', icon: <PaidIcon /> },
             // { title: 'All Contacts', link: '/all-contacts', icon: <UsersIcon /> },
         ],
     },
