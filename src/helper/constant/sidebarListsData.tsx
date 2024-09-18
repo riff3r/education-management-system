@@ -7,6 +7,8 @@ import SettingsIcon from '../../common/icons/SettingsIcon.tsx';
 
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import PaidIcon from '@mui/icons-material/Paid';
+// import AddIcon from '@mui/icons-material/Add';
+
 export interface EachListInterface {
     title: string;
     link?: string;
@@ -47,7 +49,6 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
         subMenu: [
             { title: 'Student List', link: '/students', icon: <CreatorsIcon /> },
             { title: 'Student Admission', link: '/student/Admission', icon: <UserIcon /> },
-            // { title: 'All Contacts', link: '/all-contacts', icon: <UsersIcon /> },
         ],
     },
     {
@@ -55,7 +56,30 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
         subMenu: [
             { title: 'Fees Type', link: '/fees-type', icon: <CreatorsIcon /> },
             { title: 'Manage Fees', link: '/fees-management', icon: <PaidIcon /> },
-            // { title: 'All Contacts', link: '/all-contacts', icon: <UsersIcon /> },
         ],
     },
+    // {
+    //     title: 'Employees',
+    //     subMenu: [
+    //         { title: 'All Employees', link: '/employees', icon: <UserIcon /> },
+    //         { title: 'Add New', link: '/add-employee', icon: <AddIcon /> },
+    //     ],
+    // },
+    // {
+    //     title: 'Salary',
+    //     subMenu: [
+    //         { title: 'All Employees', link: '/employees', icon: <UserIcon /> },
+    //         { title: 'Add New', link: '/add-employee', icon: <AddIcon /> },
+    //     ],
+    // },
+    {
+        title: 'Accounts',
+        subMenu: [
+            { title: 'Chart of Accounts', link: '/chart-of-accounts', icon: <CreatorsIcon /> },
+            { title: 'Add Income', link: '/add-income', icon: <PaidIcon /> },
+            { title: 'Add Expense', link: '/add-expense', icon: <PaidIcon /> },
+            { title: 'Account Statement', link: '/account-statement', icon: <PaidIcon /> },
+        ],
+    },
+
 ];
