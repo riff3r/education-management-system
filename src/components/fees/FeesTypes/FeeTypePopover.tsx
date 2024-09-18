@@ -11,8 +11,10 @@ type Props = {
     onClose: () => void;
     anchorEl: HTMLButtonElement | null;
     item: {
-        id: number;
         title: string;
+        type: string;
+        amount: number;
+        status: boolean;
     };
 };
 

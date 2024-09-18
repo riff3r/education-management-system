@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -7,18 +7,22 @@ import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal
 import AddOrEditClassModal from './AddOrEditClassModal';
 import ClassPopover from './ClassPopover';
 
-const EachClassItem = ({ item }) => {
+interface Props {
+    item: IClass;
+}
+
+const EachClassItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
     const handleConfirmDelete = () => {
-        alert(item.name);
+        alert(item.title);
         setDeleteModal(false);
     };
 
@@ -36,7 +40,7 @@ const EachClassItem = ({ item }) => {
                     {item.title}
                 </TableCell>
                 <TableCell component='td' scope='row'>
-                    {item.Shift}
+                    {item.shift}
                 </TableCell>
                 <TableCell component='td' scope='row'>
                     {item.tuitionFee}
@@ -70,7 +74,7 @@ const EachClassItem = ({ item }) => {
                         />
                     )}
 
-                    {open && <ClassPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} medium={item} />}
+                    {open && <ClassPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} classItem={item} />}
                 </TableCell>
             </TableRow>
         </>

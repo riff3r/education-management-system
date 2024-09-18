@@ -7,19 +7,21 @@ import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal
 import AddOrEditFeesTypeModal from './AddOrEditFeesTypeModal';
 import FeeTypePopover from './FeeTypePopover';
 
-type Props = {
-    item: {
-        id: number;
-        title: string;
-        feesType: string;
-        amount: string;
-        status: boolean;
-    };
-};
+export interface FeeTypeItem {
+    id: number;
+    title: string;
+    type: string; 
+    amount: number;
+    status: boolean;
+}
+
+interface Props {
+    item: FeeTypeItem;
+}
+
 const EachFeeTypeItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
-
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,25 +47,20 @@ const EachFeeTypeItem: React.FC<Props> = ({ item }) => {
                     {item.title}
                 </TableCell>
                 <TableCell component='td' scope='row'>
-                    {item.feesType === "1" ? "Compulsory" : "Optional"}
+                    {item.type === "1" ? "Compulsory" : "Optional"}  {/* Changed from item.feesType to item.type */}
                 </TableCell>
-
                 <TableCell component='td' scope='row'>
                     {item.amount}
                 </TableCell>
-
                 <TableCell component='td' scope='row'>
-                    {/* {item.status ? 'Active' : 'Inactive' } */}
                     <Switch color='primary' checked={item.status} />
                 </TableCell>
-
                 <TableCell align='center'>
                     <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={1}>
-                        <IconButton color='inherit' onClick={handleClick}>
+                        <IconButton color='default' onClick={handleClick}>
                             <MoreVertIcon />
                         </IconButton>
-
-                        <IconButton color='inherit' size='small' onClick={() => setModal(true)}>
+                        <IconButton color='default' size='small' onClick={() => setModal(true)}>
                             <EditIcon />
                         </IconButton>
                         <IconButton color='error' size='small' onClick={() => setDeleteModal(true)}>
@@ -82,7 +79,7 @@ const EachFeeTypeItem: React.FC<Props> = ({ item }) => {
                         />
                     )}
 
-                    {open && <FeeTypePopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
+                    {open && <FeeTypePopover id={id || ''} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
                 </TableCell>
             </TableRow>
         </>

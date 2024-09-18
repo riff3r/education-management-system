@@ -1,11 +1,17 @@
 import { Button, Divider, Stack, TextField } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ModalWithHeader from '../../common/modals/ModalWithHeader';
 
-const AddOrEditMediumModal = ({ open, onClose, edit }) => {
+interface IProps {
+    open: boolean;
+    onClose: () => void;
+    edit?: IMedium;
+}
+
+const AddOrEditMediumModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     const [mediumName, setMediumName] = useState(edit?.name || '');
 
-    const handleName = (event) => {
+    const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
         setMediumName(event.target.value);
     };
 

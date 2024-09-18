@@ -1,11 +1,18 @@
 import { List, ListItemButton, ListItemIcon, ListItemText, Popover, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
 import AddOrEditClassModal from './AddOrEditClassModal';
 
-const ClassPopover = ({ id, open, onClose, anchorEl, classItem }) => {
+interface Props {
+    id: string | undefined;
+    open: boolean;
+    onClose: () => void;
+    anchorEl: HTMLButtonElement | null;
+    classItem: IClass;
+}
+const ClassPopover: React.FC<Props> = ({ id, open, onClose, anchorEl, classItem }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
@@ -18,7 +25,7 @@ const ClassPopover = ({ id, open, onClose, anchorEl, classItem }) => {
     };
 
     const handleConfirmDelete = () => {
-        alert(classItem.name);
+        alert(classItem.title);
         setDeleteModal(false);
         onClose();
     };

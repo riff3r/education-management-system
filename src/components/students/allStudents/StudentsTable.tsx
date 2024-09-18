@@ -1,13 +1,15 @@
+import React from 'react';
 import { Checkbox, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { STUDENT_LIST } from '../../../helper/constant/coreConstant';
 import BasicPagination from '../../common/BasicPagination';
-import { MediumList } from '../../../helper/constant/coreConstant';
-import EachStudentItem from './EachStudentItem';
+import EachStudentItem, { TStudent } from './EachStudentItem';
 
-const StudentsTable = () => {
+
+const StudentsTable: React.FC = () => {
     return (
         <>
             <TableContainer>
-                <Table variant={'bordered'} sx={{ minWidth: 650 }}>
+                <Table /* variant={'bordered'} */ sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
                             <TableCell>
@@ -27,14 +29,14 @@ const StudentsTable = () => {
                     </TableHead>
 
                     <TableBody>
-                        {MediumList.map((medium) => (
-                            <EachStudentItem key={medium.id} item={medium} />
+                        {(STUDENT_LIST as TStudent[]).map((student) => (
+                            <EachStudentItem key={student.id} item={student} />
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
 
-            <BasicPagination list={MediumList} />
+            <BasicPagination list={[]} />
         </>
     );
 };

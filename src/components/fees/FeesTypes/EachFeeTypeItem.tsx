@@ -12,7 +12,7 @@ type Props = {
         id: number;
         title: string;
         type: string;
-        amount: string;
+        amount: number;
         status: boolean;
     };
 };

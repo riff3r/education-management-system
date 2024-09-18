@@ -75,6 +75,8 @@ const Sidebar = () => {
         history(url);
     };
 
+    console.log(navItems, navigateTo);
+
     return (
         <SidebarWrapper>
             <Stack

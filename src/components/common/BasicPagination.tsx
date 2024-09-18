@@ -1,6 +1,6 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { MenuItem, Pagination, Select, Stack, styled, Typography } from '@mui/material';
-import { useState } from 'react';
+import { MenuItem, Pagination, Select, Stack, styled, Typography, SelectChangeEvent } from '@mui/material';
+import React, { useState } from 'react';
 
 const StyledPagination = styled(Pagination)(({ theme }) => ({
     color: theme.palette.text.primary,
@@ -28,17 +28,21 @@ const MenuProps = {
     },
 };
 
-const BasicPagination = ({ list }) => {
+interface BasicPaginationProps {
+    list: any[]; // Replace 'any' with the actual type of your list items
+}
+
+const BasicPagination: React.FC<BasicPaginationProps> = ({ list }) => {
     const [page, setPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (_event: React.ChangeEvent<unknown>, newPage: number) => {
         setPage(newPage);
     };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
+    const handleChangeRowsPerPage = (event: SelectChangeEvent<number>) => {
+        setRowsPerPage(parseInt(event.target.value as string, 10));
+        setPage(1);
     };
 
     return (
@@ -54,21 +58,11 @@ const BasicPagination = ({ list }) => {
                     IconComponent={ExpandMoreIcon}
                     MenuProps={MenuProps}
                 >
-                    <CustomMenuItem color='text.primary' value={10}>
-                        10
-                    </CustomMenuItem>
-                    <CustomMenuItem color='text.primary' value={20}>
-                        20
-                    </CustomMenuItem>
-                    <CustomMenuItem color='text.primary' value={30}>
-                        30
-                    </CustomMenuItem>
-                    <CustomMenuItem color='text.primary' value={40}>
-                        40
-                    </CustomMenuItem>
-                    <CustomMenuItem color='text.primary' value={50}>
-                        50
-                    </CustomMenuItem>
+                    {[10, 20, 30, 40, 50].map((value) => (
+                        <CustomMenuItem key={value} value={value}>
+                            {value}
+                        </CustomMenuItem>
+                    ))}
                 </Select>
             </Stack>
             <StyledPagination

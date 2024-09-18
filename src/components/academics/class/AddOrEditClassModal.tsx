@@ -54,7 +54,7 @@ const AddOrEditClassModal: React.FC<IProps> = ({ open, onClose, edit }) => {
 
     const [personName, setPersonName] = useState([]);
 
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         const {
             target: { value },
         } = event;

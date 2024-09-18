@@ -8,19 +8,25 @@ import { useState } from 'react';
 import AddOrEditClassesWithSubjectModal from './AddOrEditClassesWithSubjectModal';
 
 const ClassesWithSubjectTable = () => {
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [selectedPopoverItem, setSelectedPopoverItem] = useState(null);
-    const [deleteModal, setDeleteModal] = useState(null);
+    const [selectedItem, setSelectedItem] = useState<IClassWithSubject | null>(null);
+    const [selectedPopoverItem, setSelectedPopoverItem] = useState<IClassWithSubject | null>(null);
+    const [deleteModal, setDeleteModal] = useState<boolean | IClassWithSubject[]>(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
+    const handleDelete = (item: IClassWithSubject) => {
+        setDeleteModal([item]); // Here we set the deleteModal state to the array of items to delete
+    };
+
     const handleConfirmDelete = () => {
-        alert(deleteModal.title);
-        setDeleteModal(false);
+        if (deleteModal && typeof deleteModal !== 'boolean') {
+            alert(deleteModal[0]?.title); // Assuming deleteModal contains an array of items
+        }
+        setDeleteModal(false); // Close the modal after confirmation
     };
 
     const handleClose = () => {
@@ -30,7 +36,6 @@ const ClassesWithSubjectTable = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    console.log(selectedItem);
     return (
         <>
             <TableContainer>
@@ -43,8 +48,7 @@ const ClassesWithSubjectTable = () => {
                             <TableCell>Medium</TableCell>
                             <TableCell>Section</TableCell>
                             <TableCell>Core Subjects</TableCell>
-                            <TableCell>Elective Subjects</TableCell>
-                            <TableCell align='center' width={'15%'}>
+                            <TableCell align="center" width={'15%'}>
                                 Action
                             </TableCell>
                         </TableRow>
@@ -58,7 +62,7 @@ const ClassesWithSubjectTable = () => {
                                 onSelectItem={setSelectedItem}
                                 onSelectPopoverItem={setSelectedPopoverItem}
                                 onActionPopover={handleClick}
-                                onDelete={setDeleteModal}
+                                onDelete={handleDelete} // Use handleDelete here
                             />
                         ))}
                     </TableBody>
@@ -68,19 +72,27 @@ const ClassesWithSubjectTable = () => {
             <BasicPagination list={SubjectList} />
 
             {selectedItem && (
-                <AddOrEditClassesWithSubjectModal open={selectedItem} onClose={() => setSelectedItem(null)} edit={selectedItem} />
+                <AddOrEditClassesWithSubjectModal open={!!selectedItem} onClose={() => setSelectedItem(null)} edit={selectedItem} />
             )}
 
             {deleteModal && (
                 <DeleteConfirmationModal
-                    title={'Are you sure, You want to delete this Section?'}
-                    open={deleteModal}
+                    title="Are you sure, You want to delete this Section?"
+                    open={!!deleteModal}
                     onClose={() => setDeleteModal(false)}
                     onConfirm={handleConfirmDelete}
                 />
             )}
 
-            {open && <ClassesWithSubjectPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} item={selectedPopoverItem} />}
+            {open && (
+                <ClassesWithSubjectPopover
+                    id={id as string}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    item={selectedPopoverItem as IClassWithSubject}
+                />
+            )}
         </>
     );
 };

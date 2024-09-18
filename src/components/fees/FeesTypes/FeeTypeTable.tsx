@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { FEES_TYPES, MediumList } from '../../../helper/constant/coreConstant';
+import { FEES_TYPES } from '../../../helper/constant/coreConstant';
 import BasicPagination from '../../common/BasicPagination';
 import EachFeeTypeItem from './EachFeeTypeItem';
 
@@ -28,7 +28,7 @@ const FeeTypeTable = () => {
                 </Table>
             </TableContainer>
 
-            <BasicPagination list={MediumList} />
+            <BasicPagination list={[]} />
         </>
     );
 };

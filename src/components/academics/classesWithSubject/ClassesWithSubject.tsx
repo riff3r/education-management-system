@@ -10,7 +10,7 @@ const ClassesWithSubject = () => {
     const [search, setSearch] = useState('');
     const [modal, setModal] = useState(false);
 
-    const handleSearchInput = (event) => {
+    const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
     };
 

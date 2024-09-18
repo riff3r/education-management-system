@@ -28,7 +28,7 @@ export const MediumList = [
     },
 ];
 
-export const SubjectList = [
+export const SubjectList: IClassWithSubject[] = [
     {
         id: 1,
         title: 'English',
@@ -69,29 +69,29 @@ export const SubjectType = [
     },
 ];
 
-export const ClassList = [
+export const ClassList: IClass[] = [
     {
         id: 1,
         title: 'Class one',
         section: ['A', 'B', 'C'],
-        Shift: null,
-        Semester: null,
+        shift: null,
+        semester: null,
         tuitionFee: 2000,
     },
     {
         id: 2,
         title: 'Class two',
         section: ['A', 'B', 'C'],
-        Shift: null,
-        Semester: null,
+        shift: null,
+        semester: null,
         tuitionFee: 2000,
     },
     {
         id: 3,
         title: 'Class three',
         section: ['A', 'B', 'C'],
-        Shift: null,
-        Semester: null,
+        shift: null,
+        semester: null,
         tuitionFee: 2000,
     },
 ];
@@ -137,3 +137,66 @@ export const FEES_TYPES = [
         status: false,
     },
 ];
+
+export const STUDENT_LIST = [
+    {
+      id: 1,
+      name: "Aminul Haque",
+      class: "5",
+      section: "A",
+      grNumber: "GR-1001",
+      rollNumber: 1,
+      gender: "Male",
+      admissionDate: "2022-01-15",
+      guardianName: "Mokhlesur Rahman",
+      guardianMobile: "01712345678",
+    },
+    {
+      id: 2,
+      name: "Ruhul Amin",
+      class: "5",
+      section: "B",
+      grNumber: "GR-1002",
+      rollNumber: 2,
+      gender: "Male",
+      admissionDate: "2022-02-10",
+      guardianName: "Abdur Rahim",
+      guardianMobile: "01812345679",
+    },
+    {
+      id: 3,
+      name: "Sadia Begum",
+      class: "6",
+      section: "A",
+      grNumber: "GR-1003",
+      rollNumber: 3,
+      gender: "Female",
+      admissionDate: "2021-12-20",
+      guardianName: "Shahidul Islam",
+      guardianMobile: "01912345680",
+    },
+    {
+      id: 4,
+      name: "Farhana Islam",
+      class: "6",
+      section: "B",
+      grNumber: "GR-1004",
+      rollNumber: 4,
+      gender: "Female",
+      admissionDate: "2022-03-01",
+      guardianName: "Ali Hossain",
+      guardianMobile: "01612345681",
+    },
+    {
+      id: 5,
+      name: "Mehedi Hasan",
+      class: "7",
+      section: "A",
+      grNumber: "GR-1005",
+      rollNumber: 5,
+      gender: "Male",
+      admissionDate: "2022-04-15",
+      guardianName: "Jahangir Alam",
+      guardianMobile: "01512345682",
+    }
+  ];

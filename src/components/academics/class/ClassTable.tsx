@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { ClassList } from '../../../helper/constant/coreConstant';
 import BasicPagination from '../../common/BasicPagination';
-import { ClassList, MediumList } from '../../../helper/constant/coreConstant';
 import EachClassItem from './EachClassItem';
 
 const ClassTable = () => {
@@ -28,7 +28,7 @@ const ClassTable = () => {
                 </Table>
             </TableContainer>
 
-            <BasicPagination list={MediumList} />
+            <BasicPagination list={[]} />
         </>
     );
 };

@@ -1,24 +1,27 @@
 import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SubjectPopover from './SubjectPopover';
 import AddOrEditSubjectModal from './AddOrEditSubjectModal';
 
-const EachSubjectItem = ({ item }) => {
+interface Props {
+    item: IClassWithSubject;
+}
+const EachSubjectItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event : React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
     const handleConfirmDelete = () => {
-        alert(item.name);
+        alert(item.title);
         setDeleteModal(false);
     };
 

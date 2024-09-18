@@ -12,7 +12,7 @@ interface IProps {
 interface FormData {
     title: string;
     type: string;
-    amount: string;
+    amount: number;
     status: boolean;
 }
 
@@ -21,7 +21,7 @@ const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
         defaultValues: {
             title: edit?.title || '',
             type: edit?.type || '',
-            amount: edit?.amount || '',
+            amount: edit?.amount as number || 0,
             status: edit?.status || true,
         },
     });

@@ -6,13 +6,32 @@ import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddOrEditMediumModal from '../../academics/medium/AddOrEditMediumModal';
 import StudentsPopover from './StudentsPopover';
-const EachStudentItem = ({ item }) => {
+
+export type TStudent = {
+    id: number;
+    name: string;
+    class: string;
+    section: string;
+    grNumber: string;
+    rollNumber: number;
+    Section: string;
+    gender: "Male" | "Female";
+    admissionDate: string; // ISO date string
+    guardianName: string;
+    guardianMobile: string;
+  };
+
+interface Props {
+    item: TStudent;
+}
+
+const EachStudentItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 

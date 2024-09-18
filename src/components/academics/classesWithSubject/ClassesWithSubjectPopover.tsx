@@ -1,11 +1,18 @@
 import { List, ListItemButton, ListItemIcon, ListItemText, Popover, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
 import AddOrEditClassesWithSubjectModal from './AddOrEditClassesWithSubjectModal';
 
-const ClassesWithSubjectPopover = ({ id, open, onClose, anchorEl, item }) => {
+interface Props {
+    id: string;
+    open: boolean;
+    onClose: () => void;
+    anchorEl: HTMLButtonElement | null;
+    item: IClassWithSubject;
+}
+const ClassesWithSubjectPopover: React.FC<Props> = ({ id, open, onClose, anchorEl, item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 

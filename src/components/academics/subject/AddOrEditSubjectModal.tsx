@@ -1,15 +1,21 @@
 import { Button, Divider, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, TextField } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MediumList, SubjectType } from '../../../helper/constant/coreConstant';
 import ModalWithHeader from '../../common/modals/ModalWithHeader';
 
-const AddOrEditSubjectModal = ({ open, onClose, edit }) => {
+interface IProps {
+    open: boolean;
+    onClose: () => void;
+    edit?: ISubject;
+}
+
+const AddOrEditSubjectModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     const [subjectName, setSubjectName] = useState(edit?.title || '');
     const [subjectCode, setSubjectCode] = useState(edit?.subjectCode || '');
     const [selectedType, setSelectedType] = useState(edit?.type || SubjectType[0]?.id);
     const [selectedMedium, setSelectedMedium] = useState(edit?.medium || 2);
 
-    const handleName = (event) => {
+    const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSubjectName(event.target.value);
     };
 

@@ -22,7 +22,7 @@ interface IProps {
     submitText?: string;
     width?: number;
     confirmText?: string;
-    alertIcon?: any;
+    alertIcon?: React.ReactNode;
 }
 
 const PopupAlertModal: React.FC<IProps> = ({
@@ -53,7 +53,7 @@ const PopupAlertModal: React.FC<IProps> = ({
         >
             <Stack sx={style}>
                 <Stack direction={'row'} justifyContent={'center'} padding={2} paddingBottom={0}>
-                    <IconButton variant={'outlined'} color={'warning'} sx={{ width: '75px', height: '75px' }}>
+                    <IconButton /* variant={'outlined'} */ color={'warning'} sx={{ width: '75px', height: '75px' }}>
                         {alertIcon}
                     </IconButton>
                 </Stack>
