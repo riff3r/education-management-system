@@ -4,9 +4,9 @@ import SortIcon from '@mui/icons-material/Sort';
 
 const SubjectFilter = () => {
     const theme = useTheme();
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleOpenPopup = (event) => {
+    const handleOpenPopup = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 

@@ -30,7 +30,7 @@ const propertyInObj = <T extends object>(color: string | number, obj?: T): strin
 const fontConstant = ['Inter', 'sans-serif'].join(',');
 
 export const lightModePalette = {
-    mode: 'light',
+    mode: 'light' as const,
     common: {
         black: '#000000',
         white: '#FFFFFF',

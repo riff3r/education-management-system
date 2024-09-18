@@ -2,17 +2,21 @@ import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddOrEditMediumModal from './AddOrEditMediumModal';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
 import MediumPopover from './MediumPopover';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-const EachMediumItem = ({ item }) => {
+
+interface Props {
+    item: IMedium;
+}
+const EachMediumItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
@@ -59,7 +63,7 @@ const EachMediumItem = ({ item }) => {
                         />
                     )}
 
-                    {open && <MediumPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} medium={item} />}
+                    {open && <MediumPopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} medium={item} />}
                 </TableCell>
             </TableRow>
         </>

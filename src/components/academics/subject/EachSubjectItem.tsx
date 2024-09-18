@@ -71,7 +71,7 @@ const EachSubjectItem: React.FC<Props> = ({ item }) => {
                 />
             )}
 
-            {open && <SubjectPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
+            {open && <SubjectPopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
         </>
     );
 };

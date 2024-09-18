@@ -6,13 +6,17 @@ import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SectionPopover from './SectionPopover';
 import AddOrEditSectionModal from './AddOrEditSectionModal';
-const EachSectionItem = ({ item }) => {
+
+interface Props {
+    item: ISection;
+}
+const EachSectionItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
@@ -61,7 +65,7 @@ const EachSectionItem = ({ item }) => {
                 />
             )}
 
-            {open && <SectionPopover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
+            {open && <SectionPopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
         </>
     );
 };

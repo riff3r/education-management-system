@@ -2,6 +2,10 @@ interface IMedium {
     id: number;
     name: string;
 }
+interface ISection {
+    id: number;
+    name: string;
+}
 
 interface ISubject {
     title: string;
