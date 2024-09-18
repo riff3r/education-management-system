@@ -1,28 +1,28 @@
 import React from 'react';
-import { Button, Divider, InputLabel, MenuItem, Select, Stack, Switch, TextField } from '@mui/material';
+import { Button, Divider, FormLabel, InputLabel, MenuItem, Select, Stack, Switch, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import ModalWithHeader from '../../common/modals/ModalWithHeader';
 
 interface IProps {
     open: boolean;
     onClose: () => void;
-    edit?: any;
+    edit?: FormData;
 }
 
 interface FormData {
-    feesTitle: string;
-    feesType: string;
-    feesAmount: string;
-    feesStatus: boolean;
+    title: string;
+    type: string;
+    amount: string;
+    status: boolean;
 }
 
 const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     const { control, handleSubmit } = useForm<FormData>({
         defaultValues: {
-            feesTitle: edit?.title || '',
-            feesType: edit?.feesType || '',
-            feesAmount: edit?.amount || '',
-            feesStatus: edit?.status || false,
+            title: edit?.title || '',
+            type: edit?.type || '',
+            amount: edit?.amount || '',
+            status: edit?.status || true,
         },
     });
 
@@ -36,7 +36,7 @@ const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack spacing={2} p='16px 24px 24px 24px'>
                     <Controller
-                        name='feesTitle'
+                        name='title'
                         control={control}
                         rules={{ required: 'Fee Type Name is required' }}
                         render={({ field, fieldState: { error } }) => (
@@ -45,13 +45,20 @@ const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
                     />
 
                     <Controller
-                        name='feesType'
+                        name='type'
                         control={control}
                         rules={{ required: 'Fees Type is required' }}
                         render={({ field, fieldState: { error } }) => (
                             <div>
-                                <InputLabel id='fees-type'>Fees Type</InputLabel>
-                                <Select {...field} displayEmpty required fullWidth error={!!error}>
+                                <FormLabel
+                                    sx={{ fontSize: 14, fontWeight: 500, display: 'inline-block', mb: 1 }}
+                                    id='fees-type-label'
+                                    required
+                                >
+                                    Fees Type
+                                </FormLabel>
+
+                                <Select {...field} displayEmpty required fullWidth error={!!error} aria-labelledby='medium-radio-label'>
                                     <MenuItem value='' disabled>
                                         Select Fees Type
                                     </MenuItem>
@@ -64,7 +71,7 @@ const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
                     />
 
                     <Controller
-                        name='feesAmount'
+                        name='amount'
                         control={control}
                         rules={{ required: 'Fee Amount is required' }}
                         render={({ field, fieldState: { error } }) => (
@@ -75,7 +82,7 @@ const AddOrEditFeesTypeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
                     <Stack>
                         <InputLabel id='fees-status'>Fees Status</InputLabel>
                         <Controller
-                            name='feesStatus'
+                            name='status'
                             control={control}
                             render={({ field: { onChange, value } }) => (
                                 <Switch
