@@ -18,11 +18,11 @@ const AccountStatement = () => {
     return (
         <>
             <Headline
-                title={'Chart Of Accounts'}
-                description={'Manage all your Chart Of Accounts from this dashboard.'}
+                title={'Account Statement'}
+                description={'Manage all your Account Statement from this dashboard.'}
                 action={
                     <Button startIcon={<AddIcon />} variant='contained' size='large' onClick={() => setModal(true)}>
-                        New
+                        New Income / Expense
                     </Button>
                 }
                 pb={2}

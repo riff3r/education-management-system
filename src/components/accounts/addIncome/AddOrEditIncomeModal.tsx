@@ -56,7 +56,8 @@ const AddOrEditIncomeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
                                 error={!!errors.amount}
                                 helperText={errors.amount?.message}
                                 required
-                                InputProps={{ inputProps: { min: 1 } }}
+                                slotProps={{ htmlInput: { min: 1 } }}
+                                // InputProps={{ inputProps: { min: 1 } }}
                             />
                         )}
                     />

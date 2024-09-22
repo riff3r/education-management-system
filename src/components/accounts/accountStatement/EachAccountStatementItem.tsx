@@ -1,5 +1,5 @@
-import { TableCell, TableRow } from '@mui/material';
 import React from 'react';
+import { Stack, TableCell, TableRow, Typography } from '@mui/material';
 
 interface Props {
     item: IAccountStatement;
@@ -15,13 +15,27 @@ const EachAccountStatementItem: React.FC<Props> = ({ item }) => {
                     {item.title}
                 </TableCell>
                 <TableCell component='td' scope='row' align='center'>
-                    {item.type === 'expense' && item.amount}
+                    {item.type === 'expense' && (
+                        <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={.5}>
+                            <Typography color='error' component={'span'}>
+                                ৳
+                            </Typography>
+                            <span>{item.amount}</span>
+                        </Stack>
+                    )}
                 </TableCell>
                 <TableCell component='td' scope='row' align='center'>
-                    {item.type === 'income' && item.amount}
+                    {item.type === 'income' && (
+                        <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={.5}>
+                            <Typography color='success' component={'span'}>
+                                ৳
+                            </Typography>
+                            <span>{item.amount}</span>
+                        </Stack>
+                    )}
                 </TableCell>
                 <TableCell component='td' scope='row' align='center'>
-                    {item.netAmount}
+                    ৳ {item.netAmount}
                 </TableCell>
             </TableRow>
         </>

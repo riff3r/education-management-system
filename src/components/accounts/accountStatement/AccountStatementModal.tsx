@@ -6,76 +6,90 @@ import ModalWithHeader from '../../common/modals/ModalWithHeader';
 interface IProps {
     open: boolean;
     onClose: () => void;
-    edit?: IChartOfAccounts;
 }
 
 interface FormData {
-    chartAccountName: string;
-    chartType: string;
+    title: string;
+    type: string;
+    amount: number;
 }
 
-const AccountStatementModal: React.FC<IProps> = ({ open, onClose, edit }) => {
+const AccountStatementModal: React.FC<IProps> = ({ open, onClose }) => {
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({
         defaultValues: {
-            chartAccountName: edit?.title || '',
-            chartType: edit?.type || '',
+            title: '',
+            type: '',
+            amount: 0,
         },
     });
 
     const onSubmit = (data: FormData) => {
         console.log(data);
         onClose();
-        alert(data.chartAccountName);
+        alert(data.title);
     };
 
     return (
-        <ModalWithHeader width={500} title={edit ? 'Update Chart of Account' : 'New Chart of Account'} open={open} onClose={onClose}>
+        <ModalWithHeader width={500} title={'Add New Income / Expense'} open={open} onClose={onClose}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack px={2} py={3} spacing={2}>
                     <Controller
-                        name='chartAccountName'
+                        name='title'
                         control={control}
                         rules={{ required: 'Title is required' }}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                label='Title'
-                                error={!!errors.chartAccountName}
-                                helperText={errors.chartAccountName?.message}
-                            />
+                            <TextField {...field} label='Title' error={!!errors.title} helperText={errors.title?.message} required />
                         )}
                     />
 
                     <Controller
-                        name='chartType'
+                        name='type'
                         control={control}
-                        rules={{ required: 'Chart Type is required' }}
+                        rules={{ required: 'Type is required' }}
                         render={({ field }) => (
                             <span>
                                 <InputLabel
                                     id='accountType'
                                     required
-                                    sx={{ color: errors.chartType && errors.chartType.message ? 'error.main' : '' }}
+                                    sx={{ color: errors.type && errors.type.message ? 'error.main' : '' }}
                                 >
-                                    Chart Type
+                                    Transaction Type
                                 </InputLabel>
-                                <Select {...field} labelId='accountType' displayEmpty fullWidth error={!!errors.chartType}>
+                                <Select {...field} labelId='accountType' displayEmpty fullWidth error={!!errors.type}>
                                     <MenuItem value='' disabled>
                                         Select Type
                                     </MenuItem>
                                     <MenuItem value='1'>Expense</MenuItem>
                                     <MenuItem value='2'>Income</MenuItem>
                                 </Select>
-                                {errors.chartType && (
+                                {errors.type && (
                                     <Typography variant='helperText' sx={{ color: 'error.main', fontSize: '12px' }}>
-                                        {errors.chartType.message}
+                                        {errors.type.message}
                                     </Typography>
                                 )}
                             </span>
+                        )}
+                    />
+
+                    <Controller
+                        name='amount'
+                        control={control}
+                        rules={{ required: 'Amount is required' }}
+                        render={({ field }) => (
+                            <TextField
+                                type='number'
+                                {...field}
+                                label='Amount'
+                                error={!!errors.amount}
+                                helperText={errors.amount?.message}
+                                required
+                                slotProps={{ htmlInput: { min: 1 } }}
+                                // InputProps={{ inputProps: { min: 1 } }}
+                            />
                         )}
                     />
                 </Stack>
@@ -86,7 +100,7 @@ const AccountStatementModal: React.FC<IProps> = ({ open, onClose, edit }) => {
                         Cancel
                     </Button>
                     <Button variant='contained' color='primary' type='submit'>
-                        {edit ? 'Update' : 'Submit'}
+                        {'Submit'}
                     </Button>
                 </Stack>
             </form>

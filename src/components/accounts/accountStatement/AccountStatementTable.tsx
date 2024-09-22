@@ -24,7 +24,7 @@ const AccountStatementTable: React.FC = () => {
                             <EachAccountStatementItem key={item.id} item={item} />
                         ))}
 
-                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        <TableRow>
                             <TableCell component='td' scope='row'></TableCell>
                             <TableCell component='td' scope='row'>
                                 <Typography variant='subtitle2'>Total</Typography>
@@ -32,7 +32,7 @@ const AccountStatementTable: React.FC = () => {
                             <TableCell component='td' scope='row' align='center'>
                                 <Stack>
                                     <Typography variant='subtitle2' color='error'>
-                                        $ 1231523
+                                        ৳ 1231523
                                     </Typography>
                                     <Typography variant='subtitle2' color={'error'}>
                                         Expense
@@ -42,7 +42,7 @@ const AccountStatementTable: React.FC = () => {
                             <TableCell component='td' scope='row' align='center'>
                                 <Stack>
                                     <Typography variant='subtitle2' color='success'>
-                                        $ 1231523
+                                        ৳ 1231523
                                     </Typography>
                                     <Typography variant='subtitle2' color={'success'}>
                                         Income
@@ -51,10 +51,10 @@ const AccountStatementTable: React.FC = () => {
                             </TableCell>
                             <TableCell component='td' scope='row' align='center'>
                                 <Stack>
-                                    <Typography variant='subtitle2' color='secondary'>
-                                        $ 1231523
+                                    <Typography variant='subtitle2' color='primary'>
+                                        ৳ 1231523
                                     </Typography>
-                                    <Typography variant='subtitle2' color={'secondary'}>
+                                    <Typography variant='subtitle2' color={'primary'}>
                                         Net Profit
                                     </Typography>
                                 </Stack>
