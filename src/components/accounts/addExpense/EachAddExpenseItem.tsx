@@ -2,14 +2,14 @@ import { IconButton, Stack, TableCell, TableRow } from '@mui/material';
 import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
-import AddIncomePopover from './AddIncomePopover';
 import EditIcon from '@mui/icons-material/Edit';
-import AddOrEditIncomeModal from './AddOrEditIncomeModal';
+import AddOrEditExpenseModal from './AddOrEditExpenseModal';
+import AddExpensePopover from './AddExpensePopover';
 
 interface Props {
     item: IAccountStatement;
 }
-const EachAddIncomeItem: React.FC<Props> = ({ item }) => {
+const EachAddExpenseItem: React.FC<Props> = ({ item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
@@ -49,7 +49,7 @@ const EachAddIncomeItem: React.FC<Props> = ({ item }) => {
                         </IconButton>
                     </Stack>
 
-                    {modal && <AddOrEditIncomeModal open={modal} onClose={() => setModal(false)} edit={item} />}
+                    {modal && <AddOrEditExpenseModal open={modal} onClose={() => setModal(false)} edit={item} />}
 
                     {deleteModal && (
                         <DeleteConfirmationModal
@@ -60,11 +60,11 @@ const EachAddIncomeItem: React.FC<Props> = ({ item }) => {
                         />
                     )}
 
-                    {open && <AddIncomePopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
+                    {open && <AddExpensePopover id={id as string} open={open} anchorEl={anchorEl} onClose={handleClose} item={item} />}
                 </TableCell>
             </TableRow>
         </>
     );
 };
 
-export default EachAddIncomeItem;
+export default EachAddExpenseItem;

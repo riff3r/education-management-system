@@ -3,10 +3,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Button, InputAdornment, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import Headline from '../../common/Headline';
-import AddIncomeTable from './AddIncomeTable';
-import AddOrEditIncomeModal from './AddOrEditIncomeModal';
 
-const AddIncome = () => {
+import AddOrEditExpenseModal from './AddOrEditExpenseModal';
+import AddExpenseTable from './AddExpenseTable';
+
+const AddExpense = () => {
     const [search, setSearch] = useState('');
     const [modal, setModal] = useState(false);
 
@@ -17,11 +18,11 @@ const AddIncome = () => {
     return (
         <>
             <Headline
-                title={'Add Income'}
-                description={'Manage all your Income from this dashboard.'}
+                title={'Add Expense'}
+                description={'Manage all your Expense from this dashboard.'}
                 action={
                     <Button startIcon={<AddIcon />} variant='contained' size='large' onClick={() => setModal(true)}>
-                        New Income
+                        New Expense
                     </Button>
                 }
                 pb={2}
@@ -43,13 +44,13 @@ const AddIncome = () => {
                         sx={{ maxWidth: 300 }}
                     />
 
-                    <AddIncomeTable />
+                    <AddExpenseTable />
                 </Stack>
             </Stack>
 
-            {modal && <AddOrEditIncomeModal open={modal} onClose={() => setModal(false)} />}
+            {modal && <AddOrEditExpenseModal open={modal} onClose={() => setModal(false)} />}
         </>
     );
 };
 
-export default AddIncome;
+export default AddExpense;

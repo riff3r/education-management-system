@@ -14,7 +14,7 @@ interface FormData {
     amount: number;
 }
 
-const AddIncomeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
+const AddOrEditExpenseModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     const {
         control,
         handleSubmit,
@@ -33,7 +33,7 @@ const AddIncomeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     };
 
     return (
-        <ModalWithHeader width={500} title={edit ? 'Update Income' : 'New Income'} open={open} onClose={onClose}>
+        <ModalWithHeader width={500} title={edit ? 'Update Expense' : 'New Expense'} open={open} onClose={onClose}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack px={2} py={3} spacing={2}>
                     <Controller
@@ -76,4 +76,4 @@ const AddIncomeModal: React.FC<IProps> = ({ open, onClose, edit }) => {
     );
 };
 
-export default AddIncomeModal;
+export default AddOrEditExpenseModal;

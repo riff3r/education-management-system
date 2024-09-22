@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import React, { useState } from 'react';
 import DeleteConfirmationModal from '../../common/modals/DeleteConfirmationModal';
-import AddOrEditIncomeModal from './AddOrEditIncomeModal';
+import AddOrEditExpenseModal from './AddOrEditExpenseModal';
 
 interface Props {
     id: string;
@@ -13,7 +13,7 @@ interface Props {
     item: IAddIncome;
 }
 
-const AddIncomePopover: React.FC<Props> = ({ id, open, onClose, anchorEl, item }) => {
+const AddExpensePopover: React.FC<Props> = ({ id, open, onClose, anchorEl, item }) => {
     const [modal, setModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
 
@@ -75,7 +75,7 @@ const AddIncomePopover: React.FC<Props> = ({ id, open, onClose, anchorEl, item }
             </Popover>
 
             {modal && (
-                <AddOrEditIncomeModal
+                <AddOrEditExpenseModal
                     open={modal}
                     onClose={() => {
                         setModal(false);
@@ -97,4 +97,4 @@ const AddIncomePopover: React.FC<Props> = ({ id, open, onClose, anchorEl, item }
     );
 };
 
-export default AddIncomePopover;
+export default AddExpensePopover;
