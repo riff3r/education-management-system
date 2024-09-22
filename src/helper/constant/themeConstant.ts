@@ -445,45 +445,45 @@ export const ElementProps: Components = {
 
             // Tonal
             tonalDefault: {
-                backgroundColor: alpha(lightModePalette.text.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.text.light,
             },
             tonalPrimary: {
-                backgroundColor: alpha(lightModePalette.primary.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.primary.light,
                 color: lightModePalette.primary.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.primary.light,
                 },
             },
             tonalSecondary: {
-                backgroundColor: alpha(lightModePalette.secondary.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.secondary.light,
                 color: lightModePalette.secondary.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.secondary.light,
                 },
             },
             tonalError: {
-                backgroundColor: alpha(lightModePalette.error.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.error.light,
                 color: lightModePalette.error.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.error.light,
                 },
             },
             tonalWarning: {
-                backgroundColor: alpha(lightModePalette.warning.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.warning.light,
                 color: lightModePalette.warning.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.warning.light,
                 },
             },
             tonalInfo: {
-                backgroundColor: alpha(lightModePalette.info.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.info.light,
                 color: lightModePalette.info.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.info.light,
                 },
             },
             tonalSuccess: {
-                backgroundColor: alpha(lightModePalette.success.light, lightModePalette.tonalOffset),
+                backgroundColor: lightModePalette.success.light,
                 color: lightModePalette.success.dark,
                 '&:hover': {
                     backgroundColor: lightModePalette.success.light,

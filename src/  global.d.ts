@@ -6,14 +6,12 @@ interface ISection {
     id: number;
     name: string;
 }
-
 interface ISubject {
     title: string;
     subjectCode: string;
     type: string;
     medium?: string;
 }
-
 interface IClass {
     id: number;
     title: string;
@@ -22,7 +20,6 @@ interface IClass {
     semester: string | null;
     tuitionFee: number;
 }
-
 interface IClassWithSubject {
     id: number;
     title: string;
@@ -30,5 +27,10 @@ interface IClassWithSubject {
     backgroundColor: string;
     medium: string;
     image: string;
+    type: string;
+}
+interface IChartOfAccounts {
+    id: number;
+    title: string;
     type: string;
 }

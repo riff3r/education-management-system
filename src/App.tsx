@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar';
 import Students from './components/students/allStudents/Students';
 import FeesTypes from './components/fees/FeesTypes/FeesTypes';
 import FeesManagement from './components/fees/feesManagement/FeesManagement';
+import ChartOfAccounts from './components/accounts/chartOfAccounts/ChartOfAccounts';
 
 const App = () => {
     return (
@@ -31,6 +32,11 @@ const App = () => {
 
                         <Route path='/fees-type' element={<FeesTypes />} />
                         <Route path='/fees-management' element={<FeesManagement />} />
+
+                        <Route path='/chart-of-accounts' element={<ChartOfAccounts />} />
+                        <Route path='/add-income' element={<FeesManagement />} />
+                        <Route path='/add-expense' element={<FeesManagement />} />
+                        <Route path='/account-statement' element={<FeesManagement />} />
                     </Routes>
                 </Stack>
             </Stack>
