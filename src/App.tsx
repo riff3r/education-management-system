@@ -11,6 +11,7 @@ import Students from './components/students/allStudents/Students';
 import FeesTypes from './components/fees/FeesTypes/FeesTypes';
 import FeesManagement from './components/fees/feesManagement/FeesManagement';
 import ChartOfAccounts from './components/accounts/chartOfAccounts/ChartOfAccounts';
+import AccountStatement from './components/accounts/accountStatement/AccountStatement';
 
 const App = () => {
     return (
@@ -36,7 +37,7 @@ const App = () => {
                         <Route path='/chart-of-accounts' element={<ChartOfAccounts />} />
                         <Route path='/add-income' element={<FeesManagement />} />
                         <Route path='/add-expense' element={<FeesManagement />} />
-                        <Route path='/account-statement' element={<FeesManagement />} />
+                        <Route path='/account-statement' element={<AccountStatement />} />
                     </Routes>
                 </Stack>
             </Stack>

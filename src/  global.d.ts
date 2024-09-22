@@ -34,3 +34,11 @@ interface IChartOfAccounts {
     title: string;
     type: string;
 }
+interface IAccountStatement {
+    id: number;
+    date: string;
+    title: string;
+    type: string;
+    amount: number;
+    netAmount: number;
+}

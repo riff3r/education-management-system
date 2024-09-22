@@ -216,6 +216,64 @@ export const CHART_OF_ACCOUNT = [
         id: 3,
         title: 'Re-examination fee',
         type: '1',
-    }
+    },
+];
 
+export const ACCOUNT_STATEMENT: IAccountStatement[] = [
+    {
+        id: 0.1,
+        date: '2024-01-10',
+        title: 'Student Admission Fee',
+        type: 'income',
+        amount: 10000,
+        netAmount: 10000,
+    },
+    {
+        id: 0.2,
+        date: '2024-01-10',
+        title: 'Student Tuition Fee',
+        type: 'income',
+        amount: 2000,
+        netAmount: 12000,
+    },
+    {
+        id: 1,
+        date: '2024-01-15',
+        title: 'Salary Payment',
+        type: 'expense',
+        amount: 5000,
+        netAmount: 7000,
+    },
+    {
+        id: 2,
+        date: '2024-01-20',
+        title: 'Utility Bill Payment',
+        type: 'expense',
+        amount: 150,
+        netAmount: 6850,
+    },
+    {
+        id: 3,
+        date: '2024-01-25',
+        title: 'Freelance Payment',
+        type: 'expense',
+        amount: 1200,
+        netAmount: 5650,
+    },
+    {
+        id: 4,
+        date: '2024-01-30',
+        title: 'Grocery Purchase',
+        type: 'expense',
+        amount: 250,
+        netAmount: 5400,
+    },
+    {
+        id: 5,
+        date: '2024-02-05',
+        title: 'Dining Out',
+        type: 'expense',
+        amount: 80,
+        netAmount: 5320,
+    },
 ];
