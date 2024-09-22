@@ -42,3 +42,8 @@ interface IAccountStatement {
     amount: number;
     netAmount: number;
 }
+interface IAddIncome {
+    id: number;
+    title: string;
+    amount: number;
+}
