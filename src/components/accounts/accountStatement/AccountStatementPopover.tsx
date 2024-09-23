@@ -81,7 +81,6 @@ const AccountStatementPopover: React.FC<Props> = ({ id, open, onClose, anchorEl,
                         setModal(false);
                         onClose();
                     }}
-                    edit={item}
                 />
             )}
 
