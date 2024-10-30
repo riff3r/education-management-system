@@ -14,6 +14,7 @@ import ChartOfAccounts from './components/accounts/chartOfAccounts/ChartOfAccoun
 import AccountStatement from './components/accounts/accountStatement/AccountStatement';
 import AddIncome from './components/accounts/addIncome/AddIncome';
 import AddExpense from './components/accounts/addExpense/AddExpense';
+import Login from './components/auth/login/Login';
 
 const App = () => {
     return (
@@ -22,6 +23,8 @@ const App = () => {
                 <Sidebar />
                 <Stack p={3} flex={1}>
                     <Routes>
+                        <Route path='/login' element={<Login />} />
+
                         <Route path='/' element={<h1>Dashboard</h1>} />
                         <Route path='/dashboard' element={<h1>Dashboard</h1>} />
                         <Route path='/academics/medium' element={<Medium />} />
