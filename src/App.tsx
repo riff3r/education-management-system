@@ -1,12 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
 import Medium from './components/academics/medium/Medium';
 import Section from './components/academics/section/Section';
 import Subject from './components/academics/subject/Subject';
 import ClassesWithSubject from './components/academics/classesWithSubject/ClassesWithSubject';
-import { Stack } from '@mui/material';
 import Class from './components/academics/class/Class';
 import StudentAdmission from './components/students/StudentAdmission';
-import Sidebar from './components/Sidebar';
 import Students from './components/students/allStudents/Students';
 import FeesTypes from './components/fees/FeesTypes/FeesTypes';
 import FeesManagement from './components/fees/feesManagement/FeesManagement';
@@ -15,39 +13,82 @@ import AccountStatement from './components/accounts/accountStatement/AccountStat
 import AddIncome from './components/accounts/addIncome/AddIncome';
 import AddExpense from './components/accounts/addExpense/AddExpense';
 import Login from './components/auth/login/Login';
+import AppLayout from './components/layout/AppLayout';
+
+const router = createBrowserRouter([
+    {
+        element: <AppLayout />,
+        children: [
+            {
+                path: '/',
+                element: <h1>Dashboard</h1>
+            },
+            {
+                path: '/dashboard',
+                element: <h1>Dashboard</h1>
+            },
+            {
+                path: '/academics/medium',
+                element: <Medium />
+            },
+            {
+                path: '/academics/sections',
+                element: <Section />
+            },
+            {
+                path: '/academics/subjects',
+                element: <Subject />
+            },
+            {
+                path: '/academics/classes',
+                element: <Class />
+            },
+            {
+                path: '/academics/class-with-subject',
+                element: <ClassesWithSubject />
+            },
+            {
+                path: '/student/admission',
+                element: <StudentAdmission />
+            },
+            {
+                path: '/students',
+                element: <Students />
+            },
+            {
+                path: '/fees-type',
+                element: <FeesTypes />
+            },
+            {
+                path: '/fees-management',
+                element: <FeesManagement />
+            },
+            {
+                path: '/chart-of-accounts',
+                element: <ChartOfAccounts />
+            },
+            {
+                path: '/add-income',
+                element: <AddIncome />
+            },
+            {
+                path: '/add-expense',
+                element: <AddExpense />
+            },
+            {
+                path: '/account-statement',
+                element: <AccountStatement />
+            }
+        ]
+    },
+    {
+        element: <Login />,
+        path: '/login'
+    }
+] as RouteObject[]);
 
 const App = () => {
-    return (
-        <Router>
-            <Stack direction={'row'}>
-                <Sidebar />
-                <Stack p={3} flex={1}>
-                    <Routes>
-                        <Route path='/login' element={<Login />} />
-
-                        <Route path='/' element={<h1>Dashboard</h1>} />
-                        <Route path='/dashboard' element={<h1>Dashboard</h1>} />
-                        <Route path='/academics/medium' element={<Medium />} />
-                        <Route path='/academics/sections' element={<Section />} />
-                        <Route path='/academics/subjects' element={<Subject />} />
-                        <Route path='/academics/classes' element={<Class />} />
-                        <Route path='/academics/class-with-subject' element={<ClassesWithSubject />} />
-
-                        <Route path='/student/admission' element={<StudentAdmission />} />
-                        <Route path='/students' element={<Students />} />
-
-                        <Route path='/fees-type' element={<FeesTypes />} />
-                        <Route path='/fees-management' element={<FeesManagement />} />
-
-                        <Route path='/chart-of-accounts' element={<ChartOfAccounts />} />
-                        <Route path='/add-income' element={<AddIncome />} />
-                        <Route path='/add-expense' element={<AddExpense />} />
-                        <Route path='/account-statement' element={<AccountStatement />} />
-                    </Routes>
-                </Stack>
-            </Stack>
-        </Router>
-    );
+    return <RouterProvider router={router} />;
 };
 
 export default App;
