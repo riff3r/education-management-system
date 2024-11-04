@@ -15,6 +15,9 @@ import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import { FacebookIcon, GoogleIcon, SitemarkIcon } from './CustomIcons';
 import ForgotPassword from './ForgotPassword';
+import AuthService from '../../../services/AuthService';
+import CookieService from '../../../services/CookieService';
+import { useNavigate } from 'react-router-dom';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -59,6 +62,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function Login() {
+  const navigate = useNavigate();
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
@@ -73,16 +77,25 @@ export default function Login() {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (emailError || passwordError) {
-      event.preventDefault();
       return;
     }
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const response = await AuthService.login({ email: data.get('email') as string, password: data.get('password') as string });
+
+    if (response.success) {
+      const data = response.data;
+
+      CookieService.setCookie("secure_auth_access", data.tokens.access.token);
+      CookieService.setCookie("secure_auth_refresh", data.tokens.refresh.token);
+
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    }
   };
 
   const validateInputs = () => {
@@ -228,6 +241,6 @@ export default function Login() {
           </Box> */}
         </Card>
       </SignInContainer>
-      </>
+    </>
   );
 }

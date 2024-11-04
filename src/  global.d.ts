@@ -47,3 +47,11 @@ interface IAddIncome {
     title: string;
     amount: number;
 }
+interface IResponse<T = any> {
+    success: boolean;
+    data: T;
+}
+interface ILoginCredentials {
+    email: string;
+    password: string;
+}
