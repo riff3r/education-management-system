@@ -1,3 +1,4 @@
+import { FormEvent, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MuiCard from '@mui/material/Card';
@@ -10,11 +11,12 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 import ForgotPassword from './ForgotPassword';
-import AuthService from '../../../services/AuthService';
-import CookieService from '../../../services/CookieService';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginActions } from '../../../state/feature/auth/login/loginSlice';
+import { loginSelector } from '../../../state/feature/auth/login/loginSelector';
+import { FetchStatusEnum } from '../../../services/fetchType';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -59,12 +61,22 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const loginFetchStatus = useSelector(loginSelector.loginFetchStatus);
   const navigate = useNavigate();
-  const [emailError, setEmailError] = React.useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-  const [passwordError, setPasswordError] = React.useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (loginFetchStatus === FetchStatusEnum.SUCCESS) {
+      navigate('/');
+
+      dispatch(loginActions.idleLoginFetchStatus());
+    }
+  }, [loginFetchStatus]);
 
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -74,25 +86,14 @@ export default function Login() {
     setOpen(false);
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (emailError || passwordError) {
       return;
     }
     const data = new FormData(event.currentTarget);
 
-    const response = await AuthService.login({ email: data.get('email') as string, password: data.get('password') as string });
-
-    if (response.success) {
-      const data = response.data;
-
-      CookieService.setCookie("secure_auth_access", data.tokens.access.token);
-      CookieService.setCookie("secure_auth_refresh", data.tokens.refresh.token);
-
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
-    }
+    dispatch(loginActions.login({ email: data.get('email') as string, password: data.get('password') as string }));
   };
 
   const validateInputs = () => {
@@ -132,7 +133,7 @@ export default function Login() {
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign in
+            Log in
           </Typography>
           <Box
             component="form"
@@ -202,7 +203,7 @@ export default function Login() {
               variant="contained"
               onClick={validateInputs}
             >
-              Sign in
+              Log in
             </Button>
             {/* <Typography sx={{ textAlign: 'center' }}>
               Don&apos;t have an account?{' '}
@@ -222,18 +223,18 @@ export default function Login() {
             <Button
               fullWidth
               variant="outlined"
-              onClick={() => alert('Sign in with Google')}
+              onClick={() => alert('Log in with Google')}
               startIcon={<GoogleIcon />}
             >
-              Sign in with Google
+              Log in with Google
             </Button>
             <Button
               fullWidth
               variant="outlined"
-              onClick={() => alert('Sign in with Facebook')}
+              onClick={() => alert('Log in with Facebook')}
               startIcon={<FacebookIcon />}
             >
-              Sign in with Facebook
+              Log in with Facebook
             </Button>
           </Box> */}
         </Card>

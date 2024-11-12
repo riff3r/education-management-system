@@ -1,9 +1,12 @@
-import { Fragment, useEffect } from 'react';
+import { FC, Fragment, ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CookieService from '../../services/CookieService';
 
+interface IProps {
+    children: ReactNode;
+}
 
-const SecureRoute = ({ children }) => {
+const SecureRoute: FC<IProps> = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {

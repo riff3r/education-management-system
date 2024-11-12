@@ -4,9 +4,9 @@ import CookieService from './CookieService';
 class BaseService {
     protected api: AxiosInstance;
 
-    constructor(baseURL: string) {
+    constructor() {
         this.api = axios.create({
-            baseURL: `https://school-management-system-backend-0b79.onrender.com/api/${baseURL}`,
+            baseURL: `https://school-management-system-backend-0b79.onrender.com/api`,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -30,21 +30,21 @@ class BaseService {
         );
     }
 
-    protected get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
         return this.api.get<T>(url, config);
     }
 
-    protected post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
         return this.api.post<T>(url, data, config);
     }
 
-    protected put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
         return this.api.put<T>(url, data, config);
     }
 
-    protected delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
         return this.api.delete<T>(url, config);
     }
 }
 
-export default BaseService;
+export default new BaseService;

@@ -1,6 +1,6 @@
-import { Dashboard } from '@mui/icons-material';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import SchoolIcon from '@mui/icons-material/School';
+// import { Dashboard } from '@mui/icons-material';
+// import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+// import SchoolIcon from '@mui/icons-material/School';
 import { Box, Divider, ListItem, Stack, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import List from '@mui/material/List';
@@ -34,48 +34,46 @@ const SidebarWrapper = styled(Stack)(({ theme }) => ({
     // },
 }));
 
-const navItems = [
-    {
-        id: 1,
-        label: 'Dashboard',
-        icon: <Dashboard />,
-        to: '/dashboard',
-        parentId: null,
-    },
-    {
-        id: 2,
-        label: 'Academics',
-        icon: <AccountBalanceIcon />,
-        parentId: null,
-        children: [
-            { id: 3, label: 'Medium', to: '/academics/medium' },
-            { id: 4, label: 'Sections', to: '/academics/sections' },
-            { id: 5, label: 'Subjects', to: '/academics/subjects' },
-            { id: 6, label: 'Classes', to: '/academics/classes' },
-            { id: 7, label: 'Classes with subject', to: '/academics/classes-with-subject' },
-        ],
-    },
-    {
-        id: 8,
-        label: 'Students',
-        icon: <SchoolIcon />,
-        parentId: null,
-        children: [
-            { id: 9, label: 'Student List', to: '/students' },
-            { id: 10, label: 'Student Admission ', to: '/student/Admission' },
-        ],
-    },
-];
+// const navItems = [
+//     {
+//         id: 1,
+//         label: 'Dashboard',
+//         icon: <Dashboard />,
+//         to: '/dashboard',
+//         parentId: null,
+//     },
+//     {
+//         id: 2,
+//         label: 'Academics',
+//         icon: <AccountBalanceIcon />,
+//         parentId: null,
+//         children: [
+//             { id: 3, label: 'Medium', to: '/academics/medium' },
+//             { id: 4, label: 'Sections', to: '/academics/sections' },
+//             { id: 5, label: 'Subjects', to: '/academics/subjects' },
+//             { id: 6, label: 'Classes', to: '/academics/classes' },
+//             { id: 7, label: 'Classes with subject', to: '/academics/classes-with-subject' },
+//         ],
+//     },
+//     {
+//         id: 8,
+//         label: 'Students',
+//         icon: <SchoolIcon />,
+//         parentId: null,
+//         children: [
+//             { id: 9, label: 'Student List', to: '/students' },
+//             { id: 10, label: 'Student Admission ', to: '/student/Admission' },
+//         ],
+//     },
+// ];
 
 const Sidebar = () => {
-    const history = useNavigate();
+    // const history = useNavigate();
     const navigate = useNavigate();
 
-    const navigateTo = (url: string) => {
-        history(url);
-    };
-
-    console.log(navItems, navigateTo);
+    // const navigateTo = (url: string) => {
+    //     history(url);
+    // };
 
     return (
         <SidebarWrapper>
