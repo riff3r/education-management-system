@@ -14,6 +14,7 @@ import AddIncome from './components/accounts/addIncome/AddIncome';
 import AddExpense from './components/accounts/addExpense/AddExpense';
 import Login from './components/auth/login/Login';
 import AppLayout from './components/layout/AppLayout';
+import GeneralFees from './components/pages/settings/GeneralFees';
 
 const router = createBrowserRouter([
     {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
             {
                 path: '/account-statement',
                 element: <AccountStatement />
+            },
+            {
+                path: '/general-fees',
+                element: <GeneralFees />
             }
         ]
     },
