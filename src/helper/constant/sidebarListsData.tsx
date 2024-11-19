@@ -23,7 +23,8 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
             { title: 'Dashboard', link: '/dashboard', icon: <DashboardIcon /> },
             {
                 title: 'Settings',
-                link: '/settings',
+                // link: '/settings',
+                link: '/general-fees',
                 icon: <SettingsIcon />,
                 subMenu: [
                     { title: 'Account', link: '/settings', icon: <UserIcon /> },
@@ -81,5 +82,4 @@ export const ALL_DATA_LISTS: EachListInterface[] = [
             { title: 'Account Statement', link: '/account-statement', icon: <PaidIcon /> },
         ],
     },
-
 ];
