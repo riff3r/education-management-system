@@ -6,7 +6,7 @@ class BaseService {
 
     constructor() {
         this.api = axios.create({
-            baseURL: `http://localhost:4000/api`,
+            baseURL: `${import.meta.env.VITE_APP_BACKEND_URL || 'https://school-management-system-backend-0b79.onrender.com'}/api`,
             headers: {
                 'Content-Type': 'application/json',
             },
