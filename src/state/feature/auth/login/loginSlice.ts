@@ -41,9 +41,6 @@ const loginSlice = createSlice({
     idleLoginFetchStatus: (state) => {
       state.loginFetchStatus = FetchStatusEnum.IDLE;
     },
-    resetLogin: () => {
-      return initState;
-    },
     logout: () => { },
   },
 });

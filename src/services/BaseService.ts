@@ -6,7 +6,7 @@ class BaseService {
 
     constructor() {
         this.api = axios.create({
-            baseURL: `https://school-management-system-backend-0b79.onrender.com/api`,
+            baseURL: `http://localhost:4000/api`,
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -1,6 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import MuiCard from '@mui/material/Card';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../../../state/feature/auth/login/loginSlice';
 import { loginSelector } from '../../../state/feature/auth/login/loginSelector';
 import { FetchStatusEnum } from '../../../services/fetchType';
+import LoadingButton from '../../../common/custom/LoadingButton';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -197,14 +197,15 @@ export default function Login() {
               label="Remember me"
             />
             <ForgotPassword open={open} handleClose={handleClose} />
-            <Button
+            <LoadingButton
               type="submit"
               fullWidth
               variant="contained"
               onClick={validateInputs}
+              loading={loginFetchStatus === FetchStatusEnum.FETCHING}
             >
               Log in
-            </Button>
+            </LoadingButton>
             {/* <Typography sx={{ textAlign: 'center' }}>
               Don&apos;t have an account?{' '}
               <span>
